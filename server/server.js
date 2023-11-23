@@ -5,7 +5,7 @@ const PORT_NUMBER = 3000
 app.listen(PORT_NUMBER)
 
 app.use('/' , (req,res,next)=>{
-    res.setHeader('Allow-Access-Control-Origin', '*')
+    res.setHeader('Access-Control-Allow-Origin', '*')
     console.log('saw ping')
     next()
 })

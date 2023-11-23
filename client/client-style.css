@@ -1,0 +1,65 @@
+:root
+{
+    /** here can define "global" values (e.g. color, font type, etc..)*/
+
+    --dark-primary:#2B2A4C;
+    --main-colour:#B31312;
+    --light-colour:#EA906C;
+    --light-secondary:#F5EDF7;
+    --dark-control:#000;
+    --selected-dark-control:#222;
+
+    --main-background:radial-gradient(circle closest-corner, var(--light-colour), var(--main-colour))
+}
+
+body
+{
+    background:var(--main-background);
+    height:100vh;
+    width: 100vw;
+
+    align-items: center;
+}
+
+#getId-form
+{
+    display: flex;
+    flex-direction: column;
+    flex: content-box;
+
+    justify-items: center;
+    align-items: center;
+
+    justify-content:center;
+    align-content: center;
+
+
+    background: var(--light-colour);
+}
+
+
+.my-button
+{
+    margin: 1em;
+
+    background-color: var(--dark-control);
+    -webkit-text-fill-color: var(--light-secondary);
+
+    box-shadow: var(--dark-primary);
+}
+
+.my-button:hover
+{
+    background-color: var(--selected-dark-control);
+}
+
+.my-input
+{
+    background: var(--dark-control);
+    border-color: var(--selected-dark-control);
+    -webkit-text-fill-color: var(--light-secondary);
+}
+
+
+
+

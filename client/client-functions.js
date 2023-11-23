@@ -1,27 +1,18 @@
-
-
-function getById(id)
-{
+function getById(id) {
     console.log('calling server')
     //do the server call here
-    fetch('http://localhost:3000/temp/'+id)
-        .then(response =>
-        {
-            if(response.status !== 200)
-            {
-                //BAD SERVER RESPONSE
+    fetch('http://localhost:3000/temp/' + id)
+        .then(async response => {
+            console.log(response)
+            if (response.status !== 200) {
                 console.log('bad response')
+                return
             }
 
-            else
-            {
-                response.text().then(text=>{
-                    let obj = JSON.parse(text)
-                    let time = obj["wait-time"]
-                    document.getElementById('time-span').innerText = time
+            let obj = JSON.parse(await response.text())
+            document.getElementById('time-span').innerText = obj['wait']
+            document.getElementById('expandable-span').style.visibility = 'visible'
 
-                    document.getElementById('expandable-span').style.visibility = 'visibility: visible'
-                })
-            }
+
         })
 }
