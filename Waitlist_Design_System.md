@@ -15,11 +15,11 @@ For color there are 2 main targets
 For the general theme of the system, I would like to have a spread of orange, red and some darker blue-ish colouring.
 I chose this theme because I like the colours and wanted to experiment with them
 Sample Colours (not finalized)
-#B31312
-#EA906C
-#F5EDF7
-#2B2A4C
-#222
+colour #B31312
+colour #EA906C
+colour #F5EDF7
+colour #2B2A4C
+colour #222
 
 #### Informative Colouring
 This is where the colour will make it easier for a user to see, at a glance, some important general information. 
