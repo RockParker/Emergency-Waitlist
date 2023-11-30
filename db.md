@@ -35,4 +35,4 @@ What will the database be tracking?
  - password VARCHAR(25)
 
 ### ERD
-![Diagram](shema.png)
+![Diagram](schema.png)
