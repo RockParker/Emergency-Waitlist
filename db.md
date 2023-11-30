@@ -33,3 +33,6 @@ What will the database be tracking?
 #### Passwords
  - password_id INT AUTO_INCREMENT PRIMARY KEY
  - password VARCHAR(25)
+
+### ERD
+![Diagram](shema.png)
