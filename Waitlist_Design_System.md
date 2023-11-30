@@ -22,7 +22,7 @@ colour #F5EDF7
 colour #2B2A4C
 colour #222
 
-[Example Design](colourPallete.png)
+![Example Design](colourPallete.png)
 
 #### Informative Colouring
 This is where the colour will make it easier for a user to see, at a glance, some important general information. 
