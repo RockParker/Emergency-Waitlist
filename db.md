@@ -8,11 +8,14 @@ What will the database be tracking?
 ## Entities
 
 #### Patient
+  - p_id INT AUTO_INCREMENT PRIMARY KEY
   - fname VARCHAR(20)
   - lname VARCHAR(20)
-  - arrival_time TIMESTAMP AUTO_INCREMENT
-  - severity TINYINT(15)
-  - issue_summary TINYTEXT
+
+#### Patient History
+  - h_id INT AUTO_INCREMENT PRIMARY KEY
+  - problem VARCHAR(max)
+  - 
 
 #### Employee
   - fname VARCHAR(20)
@@ -24,3 +27,8 @@ What will the database be tracking?
 #### Passwords
  - p_id INT AUTO_INCREMENT PRIMARY KEY
  - password VARCHAR(25)
+
+#### Admission
+  - arrival_time TIMESTAMP AUTO_INCREMENT
+  - severity TINYINT(15)
+  - issue_summary TINYTEXT
