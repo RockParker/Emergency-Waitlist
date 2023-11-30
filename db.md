@@ -2,6 +2,7 @@
 
 What will the database be tracking?
  - patient information
+ - patient histories (includes current admissions. will be identified by a lack of departure time)
  - employee information
  - passwords for employees
 
@@ -11,11 +12,16 @@ What will the database be tracking?
   - p_id INT AUTO_INCREMENT PRIMARY KEY
   - fname VARCHAR(20)
   - lname VARCHAR(20)
+  - password_id INT FOREIGN KEY
 
 #### Patient History
   - h_id INT AUTO_INCREMENT PRIMARY KEY
+  - arrival DATETIME
+  - departure DATETIME
+  - severity TINYINT(15)
   - problem VARCHAR(max)
-  - 
+  - resolution VARCHAR(max)
+  - p_id FOREIGN KEY
 
 #### Employee
   - fname VARCHAR(20)
@@ -25,10 +31,5 @@ What will the database be tracking?
   - p_id INT FOREIGN KEY
 
 #### Passwords
- - p_id INT AUTO_INCREMENT PRIMARY KEY
+ - password_id INT AUTO_INCREMENT PRIMARY KEY
  - password VARCHAR(25)
-
-#### Admission
-  - arrival_time TIMESTAMP AUTO_INCREMENT
-  - severity TINYINT(15)
-  - issue_summary TINYTEXT
