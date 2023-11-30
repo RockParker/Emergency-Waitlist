@@ -12,7 +12,6 @@ What will the database be tracking?
   - p_id INT AUTO_INCREMENT PRIMARY KEY
   - fname VARCHAR(20)
   - lname VARCHAR(20)
-  - password_id INT FOREIGN KEY
 
 #### Patient History
   - h_id INT AUTO_INCREMENT PRIMARY KEY
