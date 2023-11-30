@@ -3,6 +3,7 @@
 What will the database be tracking?
  - patient information
  - employee information
+ - passwords for employees
 
 ## Entities
 
@@ -17,3 +18,9 @@ What will the database be tracking?
   - fname VARCHAR(20)
   - lname VARCHAR(20)
   - role VARCHAR(20)
+  - medical_license VARCHAR(35)
+  - p_id INT FOREIGN KEY
+
+#### Passwords
+ - p_id INT AUTO_INCREMENT PRIMARY KEY
+ - password VARCHAR(25)
