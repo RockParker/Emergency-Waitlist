@@ -7,11 +7,13 @@ What will the database be tracking?
 ## Entities
 
 #### Patient
-  - name VARCHAR(45)
-  - arrival_time TIMESTAMP AI
+  - fname VARCHAR(20)
+  - lname VARCHAR(20)
+  - arrival_time TIMESTAMP AUTO_INCREMENT
   - severity TINYINT(15)
   - issue_summary TINYTEXT
 
 #### Employee
-  - name VARCHAR(45)
-  - 
+  - fname VARCHAR(20)
+  - lname VARCHAR(20)
+  - role VARCHAR(20)
