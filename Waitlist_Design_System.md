@@ -22,6 +22,8 @@ colour #F5EDF7
 colour #2B2A4C
 colour #222
 
+[example design]colourPallete.png
+
 #### Informative Colouring
 This is where the colour will make it easier for a user to see, at a glance, some important general information. 
 e.g. If a patient is waiting longer than some accepted average wait time, than the admin/nurse would see that patient's information light up in red. Patients should see the colour green when things are on track or ahead of schedule so that they feel better about the wait time.
