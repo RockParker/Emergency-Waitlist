@@ -1,3 +1,4 @@
+
 # Triage App / Emergency Waitlist
 
 The general outline for this app is that a client/patient should be able to view information related to their case, where an administrator should be able to view information about all patients
