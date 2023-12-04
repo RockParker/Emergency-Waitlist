@@ -4,23 +4,15 @@
     <meta charset="UTF-8">
     <title>Estimate</title>
     <script type="text/javascript" src="client-functions.js"></script>
+    <script type="text/javascript" src="custom-elements.js"></script>
 
     <link rel="stylesheet" type="text/css" href="client-style.css"/>
 
 </head>
 <body> <!-- The client only needs to see the estimated time left for their ticket-->
-<div id="getId-form">
-    <p>Please Enter Your ID: </p>
-    <input class="my-input" id="client-id"/>
-    <button class="my-button" onclick="getById(document.getElementById('client-id').innerText)">Submit</button>
+<div class="container" id="main-body">
 </div>
 
-<span id="expandable-span" style="visibility: hidden">
-<p>Your estimated wait time is: <span id="time-span"></span> minutes
-
-How we calculate wait times:<br>
-</p>
-</span>
-
 </body>
+<script>displayForm()</script>
 </html>

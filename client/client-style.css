@@ -9,7 +9,7 @@
     --dark-control:#000;
     --selected-dark-control:#222;
 
-    --main-background:radial-gradient(circle closest-corner, var(--light-colour), var(--main-colour))
+    --main-background:radial-gradient(circle, var(--light-colour), var(--main-colour), var(--dark-primary))
 }
 
 body
@@ -17,47 +17,53 @@ body
     background:var(--main-background);
     height:100vh;
     width: 100vw;
-
-    align-items: center;
+}
+.container
+{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-items: center;
+    -webkit-text-fill-color: var(--light-secondary);
+    text-align: center;
 }
 
-#getId-form
+id-form, client-output, #centered-div
 {
+    background: var(--dark-primary);
     display: flex;
     flex-direction: column;
-    flex: content-box;
 
-    justify-items: center;
+    width: fit-content;
     align-items: center;
+    margin: auto;
 
-    justify-content:center;
-    align-content: center;
-
-
-    background: var(--light-colour);
+    border-radius: 5pt;
 }
 
 
 .my-button
 {
-    margin: 1em;
-
+    margin: 0.5em;
     background-color: var(--dark-control);
-    -webkit-text-fill-color: var(--light-secondary);
 
-    box-shadow: var(--dark-primary);
+    box-shadow: 1pt 1pt var(--dark-primary);
 }
 
 .my-button:hover
 {
-    background-color: var(--selected-dark-control);
+    cursor:pointer;
 }
-
+.my-button:active
+{
+    box-shadow: -1pt -1pt var(--dark-primary)
+}
 .my-input
 {
     background: var(--dark-control);
-    border-color: var(--selected-dark-control);
-    -webkit-text-fill-color: var(--light-secondary);
+    border-color: var(--light-secondary);
+    margin: 5px;
+    text-align: center;
 }
 
 

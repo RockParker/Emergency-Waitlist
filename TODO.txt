@@ -1,0 +1,17 @@
+
+ ++ SERVER SIDE ++
+ =================
+ I need to translate the database ERD into a real database. // done
+ I need to write the queries that will be needed to receive information from the database
+ I need to write the express.js to expose API endpoints that allow the clients to interact with the database in a controlled way
+
+
+
+ ++ CLIENT SIDE ++
+ =================
+ I need to make it so that the client can display information in an easy to consume way
+ I need to create the methods which are going to interact with the API
+ I need to write the methods that will convert the json response form the server
+ I need to write the methods that will load the information into the display output
+
+

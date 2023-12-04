@@ -1,18 +1,36 @@
-function getById(id) {
-    console.log('calling server')
-    //do the server call here
+function getById() {
+    let id = document.getElementById('client-id').value;
+
     fetch('http://localhost:3000/temp/' + id)
         .then(async response => {
-            console.log(response)
             if (response.status !== 200) {
                 console.log('bad response')
                 return
             }
-
             let obj = JSON.parse(await response.text())
-            document.getElementById('time-span').innerText = obj['wait']
-            document.getElementById('expandable-span').style.visibility = 'visible'
-
+            displayClient(obj["wait"])
 
         })
+}
+
+
+function displayClient(time)
+{
+    let newEl = document.createElement('client-output')
+    changeBody(newEl)
+    document.getElementById('time-span').innerText = time
+}
+
+function displayForm()
+{
+    let newEl = document.createElement('id-form')
+    changeBody(newEl)
+
+}
+
+function changeBody(newEl)
+{
+    let main = document.getElementById('main-body')
+    main.innerHTML = ''
+    main.appendChild(newEl)
 }
