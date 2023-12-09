@@ -9,21 +9,21 @@ export class Patient
         this.lastName = lastname;
     }
 
-    static async InsertIntoDatabase(connection, callback, patient){
+    static async InsertIntoDatabase(callback, patient){
         //Should add injection protection in the future****
         let query = `INSERT INTO triage_schema.patient`+` (fname, lname)`+` values (\'${patient.firstName}\' , \'${patient.lastName}\');`
 
-        await UseConnection(connection, callback, query)
+        await UseConnection(callback, query)
     }
 
-    static async GetAll(connection, callback){
+    static async GetAll(callback){
         let query = `SELECT * FROM triage_schema.patient;`
-        await UseConnection(connection, callback, query)
+        await UseConnection(callback, query)
     }
 
-    static async Get(connection, callback, id){
+    static async Get(callback, id){
         let query = `SELECT * FROM triage_schema.patient WHERE id = ${id};`
-        await UseConnection(connection, callback, query)
+        await UseConnection(callback, query)
     }
 
     static CreatePatient(j){

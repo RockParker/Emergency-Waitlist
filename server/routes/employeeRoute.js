@@ -4,16 +4,15 @@ import {Employee} from "../MyClasses/Employee.js";
 
 export const employeeRouter = express.Router()
 
-employeeRouter.get('/get/:id', async (req, res) => {
-    let id = req.params.id
-    await Employee.Get(connection, (output, status)=>{
+employeeRouter.get('/get/:username', async (req, res) => {
+    await Employee.Get((output, status)=>{
         res.status(status)
         res.send(output)
-    } , id)
+    } , req.params.username)
 })
 
 employeeRouter.get('/get-all', async (req, res) => {
-    await Employee.GetAll(connection, (output, status)=>{
+    await Employee.GetAll((output, status)=>{
         res.status(status)
         res.send(output)
     } )
@@ -21,14 +20,14 @@ employeeRouter.get('/get-all', async (req, res) => {
 
 employeeRouter.post('/new', async (req, res) =>{
 
-    await Employee.InsertIntoDatabase(connection, (output, status)=>{
+    await Employee.InsertIntoDatabase((output, status)=>{
         res.status(status)
         res.send(output)
     } , Employee.CreateEmployee(req.body["employee"]))//change this to take from the body
 })
 
 employeeRouter.put('/update', async (req, res) => {
-    await Employee.Update(connection, (output, status)=>{
+    await Employee.Update((output, status)=>{
         res.status(status)
         res.send(output)
     }, new Employee())

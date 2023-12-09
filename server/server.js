@@ -22,23 +22,14 @@ app.use((req,res,next)=>{
 })
 
 
-app.use("/patient", patientRouter)
+app.use("/patient", patientRouter) //here be the middleware
 app.use("/history", historyRouter)
 app.use("/employee", employeeRouter)
 
 
-
-app.get('/create/tables', (req, res) =>{
-
-    DoesDBExist(connection, (ret, status)=>{
-            console.log(ret)
-            res.status(status)
-            res.send(ret)
-    })
-})
 app.get('/exists/tables', (req, res) => {
 
-    DoesDBExist(connection, (ret, statusCode)=>{
+    DoesDBExist((ret, statusCode)=>{
         console.log(ret)
         res.status(statusCode)
         res.send(ret)
@@ -46,8 +37,8 @@ app.get('/exists/tables', (req, res) => {
 
 })
 
-app.get('/login', async (req, res) =>{
-    await Employee.Login(connection, (o,s)=>{
+app.get('/login/:username&:password', async (req, res) =>{
+    await Employee.Login((o,s)=>{
         res.sendStatus(s)
-    }, Employee.CreateEmployee(req.body["employee"]))
+    }, req.params.username, req.params.password )
 })

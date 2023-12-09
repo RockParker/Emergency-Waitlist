@@ -1,3 +1,4 @@
+import {connection} from "./server.js";
 const CreationQueries =
     [
 
@@ -6,6 +7,7 @@ const CreationQueries =
         employee_id INT AUTO_INCREMENT PRIMARY KEY,
         fname           VARCHAR(20),
         lname           VARCHAR(20),
+        username        VARCHAR(20) UNIQUE,
         role             VARCHAR(20),
         medical_license VARCHAR(35),
         password        VARCHAR(28)
@@ -48,7 +50,7 @@ const DoesExistQuery = `
  * @param connection a setup sql connection
  * @param callBack
  */
-export async function CreateTables(connection, callBack) {
+export async function CreateTables(callBack) {
 
     for (let i = 0; i < CreationQueries.length; i++) {
         await connection.query(CreationQueries[i], function (err) {
@@ -63,7 +65,7 @@ export async function CreateTables(connection, callBack) {
 }
 
 
-export function DoesDBExist(connection, callback) {
+export function DoesDBExist(callback) {
 
     connection.query(DoesExistQuery, function (err, results) {
         if (err) {
@@ -75,7 +77,7 @@ export function DoesDBExist(connection, callback) {
 
         if(!val)
         {
-            CreateTables(connection, callback)
+            CreateTables(callback)
         }
         else callback(val, 200)
     })

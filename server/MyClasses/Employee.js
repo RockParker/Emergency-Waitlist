@@ -1,42 +1,43 @@
-//import {connection} from "../server.js"
-import {UseConnection} from "./SharedConnection.js";
+import {UseConnection} from "./SharedConnection.js"
+
 
 export class Employee{
     firstName
     lastName
+    userName
     role
     license
     password
     id
 
-    constructor(firstname, lastname, role, license, password, id){
-    this.firstName = firstname
+    constructor(firstname, lastname, username, role, license, password, id){
+        this.firstName = firstname
         this.lastName = lastname
+        this.userName = username
         this.role = role
         this.license = license
         this.password = password
         this.id = id
     }
 
-    static async GetAll(connection, callback){
+    static async GetAll(callback){
         let query = `SELECT * FROM triage_schema.employee`
-        await UseConnection(connection, callback, query)
+        await UseConnection(callback, query)
     }
 
-    static async Get(connection, callback, id){
-        let query = `SELECT * FROM triage_schema.employee WHERE employee_id = ${id};`
-        await UseConnection(connection, callback, query)
+    static async Get(callback, username){
+        let query = `SELECT * FROM triage_schema.employee WHERE username like '${username}';`
+        await UseConnection(callback, query)
     }
 
-    static async InsertIntoDatabase(connection, callback, employee){
-        let query = `INSERT INTO triage_schema.employee (`+`fname, lname, role, medical_license, password) `+
-            `VALUES ('${employee.firstName}', '${employee.lastName}', '${employee.role}', '${employee.license}', '${employee.password}');`
-        //lastname = '; DROP S'
-        await UseConnection(connection, callback, query)
+    static async InsertIntoDatabase(callback, employee){
+        let query = `INSERT INTO triage_schema.employee (`+`fname, lname, username, role, medical_license, password) `+
+            `VALUES ('${employee.firstName}', '${employee.lastName}', '${employee.userName}', '${employee.role}', '${employee.license}', '${employee.password}');`
+        await UseConnection(callback, query)
     }
 
 
-    static async Update(connection, callback, e){
+    static async Update(callback, e){
         let query =
             `UPDATE triage_schema.employee `+
             `SET fname = '${e.firstName}', lname = '${e.lastName}', role ='${e.role}', `+
@@ -44,16 +45,16 @@ export class Employee{
             `WHERE employee_id = ${e.id};`
 
 
-        await UseConnection(connection, callback, query)
+        await UseConnection(callback, query)
 
     }
 
-    static async Login(connection, callback, e)
+    static async Login(callback, username, password)
     {
-        let query = `SELECT * FROM triage_schema.employee WHERE password = '${e.password}';`
+        let query = `SELECT * FROM triage_schema.employee WHERE password = '${password}' AND username = '${username}';`
         console.log(query)
         let output
-        await UseConnection(connection, (o, s)=>
+        await UseConnection((o, s)=>
         {
 /*            let json = JSON.parse(o)
             for(let o in json)
@@ -65,9 +66,12 @@ export class Employee{
     }
 
     static CreateEmployee(j){
+        if(j == null)
+            return;
         return new Employee(
             j["fname"],
             j["lname"],
+            j["username"],
             j["role"],
             j["license"],
             j["password"],

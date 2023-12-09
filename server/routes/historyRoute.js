@@ -6,21 +6,21 @@ export const historyRouter = express.Router()
 
 historyRouter.post('/new', async (req, res) =>{
 
-    await PatientHistory.InsertIntoDatabase(connection, (o,s) =>{
+    await PatientHistory.InsertIntoDatabase((o,s) =>{
         res.status(s)
         res.send(o)
     }, PatientHistory.CreatePatientHistory(req.body["history"]))
 })
 
 historyRouter.get('/get-all', async (req, res)=>{
-    await PatientHistory.GetAll(connection, (o, s) =>{
+    await PatientHistory.GetAll((o, s) =>{
         res.status(s)
         res.send(o)
     })
 })
 
 historyRouter.get('/get-incomplete', async (req, res) =>{
-    await PatientHistory.GetIncomplete(connection, (o, s)=>{
+    await PatientHistory.GetIncomplete((o, s)=>{
         res.status(s)
         res.send(o)
     })
@@ -28,7 +28,7 @@ historyRouter.get('/get-incomplete', async (req, res) =>{
 
 
 historyRouter.put('/update', async (req, res) =>{
-    await PatientHistory.Update(connection, (o,s)=>{
+    await PatientHistory.Update((o,s)=>{
         res.status(s)
         res.send(o)
     }, PatientHistory.CreatePatientHistory(req.body["history"]))
@@ -36,7 +36,7 @@ historyRouter.put('/update', async (req, res) =>{
 })
 
 historyRouter.get('/get/:id', async (req, res) => {
-    await PatientHistory.Get(connection, (o, s)=>{
+    await PatientHistory.Get((o, s)=>{
         res.status(s)
         res.send(o)
         }, req.params.id)

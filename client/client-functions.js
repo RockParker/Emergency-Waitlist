@@ -25,7 +25,6 @@ function displayForm()
 {
     let newEl = document.createElement('id-form')
     changeBody(newEl)
-
 }
 
 function changeBody(newEl)
