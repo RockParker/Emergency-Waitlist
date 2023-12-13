@@ -34,6 +34,9 @@ class MutableEntity extends Entity {
     }
 }
 
+
+
+
 /**
  * Handles patient related functions, overriding the super classes
  */
@@ -48,15 +51,29 @@ export class Patient extends Entity {
         this.lastName = lastName
     }
 
+    /**
+     * returns a json object that represents the patient at this id
+     * to access, you need to get the "patient" object from within it first
+     * @param id
+     * @returns {Promise<Response>}
+     * @constructor
+     */
     static GetById(id) {
         return super.GetById(patient_endpoint, id)
     }
 
+    /**
+     * @returns {Promise<Response>} A list which can be passed through the "From Json" Class to get a list of patients
+     * @constructor
+     */
     static GetAll() {
         return super.GetAll(patient_endpoint)
     }
 
     /**
+     * returns the few lines that the sql db returns.
+     * Users should utilize the "insertId" lines to set the id of the
+     * patient they just added. not doing this is very bad
      * @param {Patient} patient
      * @constructor
      */
@@ -86,6 +103,8 @@ export class Patient extends Entity {
         return ret
     }
 }
+
+
 
 
 /**
@@ -138,16 +157,34 @@ export class PatientHistory extends MutableEntity {
         return super.Update(history_endpoint, jsonString)
     }
 
+    /**
+     *
+     * @param json
+     * @returns {{PatientHistory}}
+     * @constructor
+     */
     static FromJson(json) {
-        let h = new History()
-        h.id = json["id"]
-        h.severity = json["severity"]
-        h.problem = json["problem"]
-        h.resolution = json["resolution"]
-        h.patient_id = json["patient_id"]
-        h.attending_id = json["attending_id"]
+        let array = JSON.parse(json)
+        let ret = {}
+
+        for(let i = 0; i < array.length; i++)
+        {
+            let h = new History()
+            h.id = array[i]["id"]
+            h.severity = array[i]["severity"]
+            h.problem = array[i]["problem"]
+            h.resolution = array[i]["resolution"]
+            h.patient_id = array[i]["patient_id"]
+            h.attending_id = array[i]["attending_id"]
+            ret.append(h)
+        }
+        return ret
     }
 }
+
+
+
+
 
 /**
  * Handles employee related functions, overriding the super classes
@@ -203,16 +240,30 @@ export class Employee extends MutableEntity {
         return await super.Update(employee_endpoint, jsonString)
     }
 
+    /**
+     *
+     * @param json
+     * @returns {{History}}
+     * @constructor
+     */
     static FromJson(json) {
-        let h = new History()
-        h.firstName  = json["firstName"]
-        h.lastName = json["lastName"]
-        h.userName = json["userName"]
-        h.role = json["role"]
-        h.license = json["license"]
-        h.password = json["password"]
-        h.id = json["id"]
-        return h
+        let array = JSON.parse(json)
+        let ret = {}
+
+        for(let i = 0; i < array.length; i++)
+        {
+            let h = new History()
+            h.firstName  = json["firstName"]
+            h.lastName = json["lastName"]
+            h.userName = json["userName"]
+            h.role = json["role"]
+            h.license = json["license"]
+            h.password = json["password"]
+            h.id = json["id"]
+            ret.append(h)
+        }
+
+        return ret
     }
 
 
