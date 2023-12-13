@@ -8,7 +8,6 @@ import {historyRouter} from "./routes/historyRoute.js";
 import {DoesDBExist} from "./SQLCreationMethods.js";
 import {Employee} from "./MyClasses/Employee.js";
 
-
 export const connection = sql.createPool({host:'localhost',user:'ross',password:'password'}) //by default this DOES NOT allow multiple queries, this stops blind injection
 const app = express()
 const PORT_NUMBER = 3000
@@ -20,7 +19,6 @@ app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin', '*')
     next()
 })
-
 
 app.use("/patient", patientRouter) //here be the middleware
 app.use("/history", historyRouter)

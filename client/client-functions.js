@@ -1,3 +1,5 @@
+import {Patient} from "./ServerConnection.js";
+
 function getById() {
     let id = document.getElementById('client-id').value;
 

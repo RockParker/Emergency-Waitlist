@@ -1,7 +1,8 @@
 import express, {json} from 'express'
 import {Patient} from "../MyClasses/Patient.js"
-import {connection} from "../server.js"
 export const patientRouter = express.Router()
+
+//patient only needs firstName and lastName
 
 patientRouter.post("/new", async (req, res) => {
     await Patient.InsertIntoDatabase((out, status)=>{
@@ -25,7 +26,3 @@ patientRouter.get('/get/:id', async (req, res) =>{
     }, id)
 })
 
-
-patientRouter.put('/update', (req, res) => {
-    let patient = req.body["patient"]; // assume json with all values
-})

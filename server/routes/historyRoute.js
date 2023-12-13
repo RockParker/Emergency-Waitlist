@@ -28,6 +28,7 @@ historyRouter.get('/get-incomplete', async (req, res) =>{
 
 
 historyRouter.put('/update', async (req, res) =>{
+    console.log('From the server: '+req.body["history"])
     await PatientHistory.Update((o,s)=>{
         res.status(s)
         res.send(o)

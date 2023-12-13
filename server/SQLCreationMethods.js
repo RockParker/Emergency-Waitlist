@@ -16,8 +16,8 @@ const CreationQueries =
     `CREATE TABLE triage_schema.patient
     (
         id    INT AUTO_INCREMENT PRIMARY KEY,
-        fname VARCHAR(20),
-        lname VARCHAR(20)
+        firstName VARCHAR(20),
+        lastName VARCHAR(20)
     );`,
 
     `CREATE TABLE triage_schema.patient_history

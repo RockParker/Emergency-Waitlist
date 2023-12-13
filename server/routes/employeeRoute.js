@@ -1,10 +1,9 @@
 import express from "express";
-import {connection} from "../server.js";
 import {Employee} from "../MyClasses/Employee.js";
 
 export const employeeRouter = express.Router()
 
-employeeRouter.get('/get/:username', async (req, res) => {
+employeeRouter.get('/get/:id', async (req, res) => {
     await Employee.Get((output, status)=>{
         res.status(status)
         res.send(output)
@@ -26,9 +25,10 @@ employeeRouter.post('/new', async (req, res) =>{
     } , Employee.CreateEmployee(req.body["employee"]))//change this to take from the body
 })
 
+
 employeeRouter.put('/update', async (req, res) => {
     await Employee.Update((output, status)=>{
         res.status(status)
         res.send(output)
-    }, new Employee())
+    }, Employee.CreateEmployee(req.body["employee"]))
 })

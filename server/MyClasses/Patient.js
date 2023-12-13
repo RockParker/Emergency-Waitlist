@@ -1,4 +1,5 @@
 import {UseConnection} from './SharedConnection.js'
+
 export class Patient
 {
     firstName
@@ -9,10 +10,8 @@ export class Patient
         this.lastName = lastname;
     }
 
-    static async InsertIntoDatabase(callback, patient){
-        //Should add injection protection in the future****
-        let query = `INSERT INTO triage_schema.patient`+` (fname, lname)`+` values (\'${patient.firstName}\' , \'${patient.lastName}\');`
-
+    static async Get(callback, id){
+        let query = `SELECT * FROM triage_schema.patient WHERE id = ${id};`
         await UseConnection(callback, query)
     }
 
@@ -21,15 +20,16 @@ export class Patient
         await UseConnection(callback, query)
     }
 
-    static async Get(callback, id){
-        let query = `SELECT * FROM triage_schema.patient WHERE id = ${id};`
+    static async InsertIntoDatabase(callback, patient){
+        //Should add injection protection in the future****
+        let query = `INSERT INTO triage_schema.patient`+` (firstName, lastName)`+` values (\'${patient.firstName}\' , \'${patient.lastName}\');`
         await UseConnection(callback, query)
     }
 
     static CreatePatient(j){
         return new Patient(
-            j["fname"],
-            j["lname"]
+            j["firstName"],
+            j["lastName"]
         )
     }
 }

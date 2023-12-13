@@ -20,13 +20,13 @@ export class Employee{
         this.id = id
     }
 
-    static async GetAll(callback){
-        let query = `SELECT * FROM triage_schema.employee`
+    static async Get(callback, id){
+        let query = `SELECT * FROM triage_schema.employee WHERE id like '${id}';`
         await UseConnection(callback, query)
     }
 
-    static async Get(callback, username){
-        let query = `SELECT * FROM triage_schema.employee WHERE username like '${username}';`
+    static async GetAll(callback){
+        let query = `SELECT * FROM triage_schema.employee`
         await UseConnection(callback, query)
     }
 
@@ -36,21 +36,18 @@ export class Employee{
         await UseConnection(callback, query)
     }
 
-
     static async Update(callback, e){
         let query =
             `UPDATE triage_schema.employee `+
             `SET fname = '${e.firstName}', lname = '${e.lastName}', role ='${e.role}', `+
             `medical_license = '${e.license}', password = '${e.password}' ` +
             `WHERE employee_id = ${e.id};`
-
-
         await UseConnection(callback, query)
-
     }
 
     static async Login(callback, username, password)
     {
+        throw new Error('Not Implemented')
         let query = `SELECT * FROM triage_schema.employee WHERE password = '${password}' AND username = '${username}';`
         console.log(query)
         let output
@@ -69,13 +66,13 @@ export class Employee{
         if(j == null)
             return;
         return new Employee(
-            j["fname"],
-            j["lname"],
-            j["username"],
+            j["firstName"],
+            j["lastName"],
+            j["userName"],
             j["role"],
             j["license"],
             j["password"],
-            j["employee_id"]
+            j["id"]
         )
     }
 }
