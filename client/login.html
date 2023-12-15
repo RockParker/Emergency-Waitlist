@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Login</title>
+
+        <link rel="stylesheet" href="loginstyle.css" ></link>
+
+
+        <script src="ServerConnection.js"></script>
+        <script src="client-functions.js"></script>
+    </head>
+
+
+<body>
+    <div class="login-container">
+        <h2>Login (patients don't use password field)</h2>
+        <form action="#" method="post" id="loginForm">
+            <label for="loginId">Login ID:</label>
+            <input type="text" id="loginId" name="loginId" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button class="button" type="button" id="submit" onclick="LoginUser()">Login</button>
+        </form>
+    </div>
+</body>
+
+
+</html>

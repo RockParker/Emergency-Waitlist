@@ -1,13 +1,14 @@
-import {Employee, Patient} from "./ServerConnection.js";
-
+import {Employee, Patient} from "./ServerConnection.js"
+console.log('FUCK THIS RETARDED SHIT')
 export function LoginUser()
 {
 
     let username = document.getElementById('loginId').value
     let password = document.getElementById('password').value
 
-    if(password === '' || password === null)
-    {
+    if(password === '' || password === null){
+
+
         Patient.GetById(username)
             .then(response => response.text())
             .then(text =>{
