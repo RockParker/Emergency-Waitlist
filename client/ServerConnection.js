@@ -102,6 +102,7 @@ export class Patient extends Entity {
 
         return ret
     }
+
 }
 
 
@@ -264,6 +265,11 @@ export class Employee extends MutableEntity {
         }
 
         return ret
+    }
+
+    static async Login(username, password)
+    {
+        return await fetch(`http://localhost:3000/login/${username}&${password}`)
     }
 
 

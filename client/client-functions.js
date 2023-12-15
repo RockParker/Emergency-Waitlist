@@ -1,37 +1,27 @@
-import {Patient} from "./ServerConnection.js";
+import {Employee, Patient} from "./ServerConnection.js";
 
-function getById() {
-    let id = document.getElementById('client-id').value;
-
-    fetch('http://localhost:3000/temp/' + id)
-        .then(async response => {
-            if (response.status !== 200) {
-                console.log('bad response')
-                return
-            }
-            let obj = JSON.parse(await response.text())
-            displayClient(obj["wait"])
-
-        })
-}
-
-
-function displayClient(time)
+export function LoginUser()
 {
-    let newEl = document.createElement('client-output')
-    changeBody(newEl)
-    document.getElementById('time-span').innerText = time
-}
 
-function displayForm()
-{
-    let newEl = document.createElement('id-form')
-    changeBody(newEl)
-}
+    let username = document.getElementById('loginId').value
+    let password = document.getElementById('password').value
 
-function changeBody(newEl)
-{
-    let main = document.getElementById('main-body')
-    main.innerHTML = ''
-    main.appendChild(newEl)
+    if(password === '' || password === null)
+    {
+        Patient.GetById(username)
+            .then(response => response.text())
+            .then(text =>{
+                console.log(text)
+                //this is where we should be loading the new web page with the data from the response
+            })
+    }
+    else{
+        Employee.Login(username, password)
+            .then(response => response.text())
+            .then(text =>{
+                console.log(text)
+                //this is where we should load the new web page with the data from the response
+            })
+    }
+
 }
